@@ -18,10 +18,12 @@ ARCHIVE_DIR="$HOME/log_archive"
 mkdir -p "$ARCHIVE_DIR"
 
 # Timestamp name handling
-TIMESTAMP=$(date + "Y%m%d_%H%M%S")
+TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
 ARCHIVE_NAME="logs_archive_${TIMESTAMP}.tar.gz"
 ARCHIVE_PATH="${ARCHIVE_DIR}/${ARCHIVE_NAME}"
 
 # Compress the log files
-LOGFILE="${ARCHIVE_DIR}/archive_log.txt"
 tar -czf "$ARCHIVE_PATH" -C "$LOG_DIR"
+
+# Output the execution
+echo "Logs archived to ${ARCHIVE_PATH}"
