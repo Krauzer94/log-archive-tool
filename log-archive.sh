@@ -14,12 +14,10 @@ check_dir() {
   fi
 }
 
-# Create arquive log directory
-archive_dir() {
-  LOG_DIR="$1"
-  ARCHIVE_DIR="/var/archive"
-  mkdir -p "$ARCHIVE_DIR"
-}
+# Create log archive directory
+LOG_DIR="$1"
+ARCHIVE_DIR="$HOME/log_archive"
+mkdir -p "$ARCHIVE_DIR"
 
 # Execute chain
 check_dir
