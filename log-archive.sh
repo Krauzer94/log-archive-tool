@@ -7,7 +7,7 @@ set -e
 if [ -z "$1" ]; then
   echo ""
   echo "Error: please provide a log directory"
-  echo "Usage: $0 <log-directory>"
+  echo "Usage: ./log-archive <log-directory>"
   echo ""
   exit 1
 fi
@@ -22,8 +22,5 @@ TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
 ARCHIVE_NAME="logs_archive_${TIMESTAMP}.tar.gz"
 ARCHIVE_PATH="${ARCHIVE_DIR}/${ARCHIVE_NAME}"
 
-# Compress the log files
-tar -czf "$ARCHIVE_PATH" -C "$LOG_DIR"
-
-# Output the execution
-echo "Logs archived to ${ARCHIVE_PATH}"
+# Find all log files
+LOG_FILES=$(find "$LOG_DIR" -type f -name "*.log")
