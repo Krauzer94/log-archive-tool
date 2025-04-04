@@ -19,5 +19,9 @@ LOG_DIR="$1"
 ARCHIVE_DIR="$HOME/log_archive"
 mkdir -p "$ARCHIVE_DIR"
 
+# Timestamp name handling
+TIMESTAMP=$(date + "Y%m%d_%H%M%S")
+ARCHIVE_NAME="logs_archive_${TIMESTAMP}.tar.gz"
+
 # Execute chain
 check_dir
