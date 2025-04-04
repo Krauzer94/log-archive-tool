@@ -24,3 +24,19 @@ ARCHIVE_PATH="${ARCHIVE_DIR}/${ARCHIVE_NAME}"
 
 # Find all log files
 LOG_FILES=$(find "$LOG_DIR" -type f -name "*.log")
+
+# Check for non-log files
+if [ -z "$LOG_FILES" ]; then
+  echo ""
+  echo "No log files were found in ${LOG_FILES}, nothing to archive"
+  echo ""
+  exit 0
+else
+  # Compress the log files
+  tar -czf "$ARCHIVE_PATH" -C "$LOG_DIR" $(find "$LOG_DIR" -type f -name "*.log" -printf "%P\n")
+
+  # Output the execution
+  echo ""
+  echo "Logs archived to ${ARCHIVE_PATH}"
+  echo ""
+fi
